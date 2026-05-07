@@ -20,3 +20,44 @@ const checkType = (input: StringOrNumber): string => {
 };
 
 // Problem 4:
+function getProperty<T, K extends keyof T>(object: T, key: K): T[K] {
+  return object[key];
+}
+
+// Problem 5:
+interface Book {
+  title: string;
+  author: string;
+  publishedYear: number;
+}
+
+function toggleReadStatus(book: Book): Book & { isRead: boolean } {
+  return { ...book, isRead: true };
+}
+
+// Problem 6:
+class Person {
+  constructor(
+    public name: string,
+    public age: number,
+  ) {}
+}
+
+class Student extends Person {
+  constructor(
+    name: string,
+    age: number,
+    public grade: string,
+  ) {
+    super(name, age);
+  }
+
+  getDetails(): string {
+    return `Name: ${this.name}, Age: ${this.age}, Grade: ${this.grade}`;
+  }
+}
+
+// Problem 7:
+function getIntersection(arr1: number[], arr2: number[]): number[] {
+  return arr1.filter((item) => arr2.includes(item));
+}
